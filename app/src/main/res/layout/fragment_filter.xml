@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#171616"
+    tools:context=".FilterFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_filter"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:padding="16dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipgroup_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_alive"
+                style="@style/ChipStyle"
+                android:text="@string/txt_alive"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_dead"
+                style="@style/ChipStyle"
+                android:text="@string/txt_dead"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_unknown"
+                style="@style/ChipStyle"
+                android:text="@string/txtunknown"/>
+        </com.google.android.material.chip.ChipGroup>
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/title_gender"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+        
+            <RadioButton
+                android:id="@+id/radio_female"
+                style="@style/RadioButtonStyle"
+                android:background="@drawable/radiobutton_female_selector"
+                android:text="@string/txt_female"/>
+            <RadioButton
+                android:id="@+id/radio_male"
+                style="@style/RadioButtonStyle"
+                android:background="@drawable/radiobutton_male_selector"
+                android:text="@string/txt_male"/>
+
+            <RadioButton
+                android:id="@+id/radio_genderless"
+                style="@style/RadioButtonStyle"
+                android:background="@drawable/radiobutton_genderless_selector"
+                android:text="@string/txt_genderless"/>
+
+            <RadioButton
+                android:id="@+id/radio_unknown"
+                style="@style/RadioButtonStyle"
+                android:background="@drawable/radiobutton_unknown_selector"
+                android:text="@string/txt_unknown"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_apply_filter"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/title_apply"
+        app:backgroundTint="@null"
+        android:background="@drawable/background_button"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"/>
+
+
+
+</LinearLayout>
