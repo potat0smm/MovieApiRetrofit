@@ -1,67 +1,28 @@
 package com.example.movieapiretrofit
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.movieapiretrofit.databinding.FragmentListBinding
 
 
-class ListFragment : Fragment() {
+class ListFragment : Fragment(R.layout.fragment_list) {
 
-    private var fbinding: FragmentListBinding? = null
-    private val binding get() = fbinding!!
-    private val sharedViewModel: SharedViewModel by activityViewModels {SharedViewModelFactory(
-        Repository()
-    )}
+    private lateinit var  binding: FragmentListBinding
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        sharedViewModel.getCharacter(1)
-    }
-
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        /*sharedViewModel.listCharacters.observe(viewLifecycleOwner, {response ->
-            if(response.isSuccessful){
-                Log.d("Result", response.body()!!.result.toString())
-            }
-            else{
-                Log.d("Result Error",response.code().toString())
-            }
-        })*/
-
-
-
-
-        /*binding.btnFilter.setOnClickListener{
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.btnFilter.setOnClickListener {
             findNavController().navigate(R.id.action_listFragment_to_filterFragment)
-        }*/
-
-        /*binding.titleCharacters.setOnCliclListener{
-            findNavController().navigate(R.id.action_listFragment_to_detailFragment)
-        }*/
-
+        }
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        fbinding = null
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        fbinding = FragmentListBinding.inflate(layoutInflater,container,false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentListBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+
 }

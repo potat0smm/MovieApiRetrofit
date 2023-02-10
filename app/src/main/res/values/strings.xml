@@ -17,4 +17,6 @@
     <string name="txt_genderless">Genderless</string>
     <string name="txt_unknown">unknown</string>
     <string name="title_apply">APPLY</string>
+    <string name="status">Status</string>
+    <string name="todo">TODO</string>
 </resources>

@@ -5,33 +5,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.movieapiretrofit.databinding.FragmentFilterBinding
+import com.example.movieapiretrofit.databinding.FragmentListBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
-class FilterFragment : Fragment() {
+class FilterFragment : BottomSheetDialogFragment() {
 
-    private var fbinding: FragmentFilterBinding? = null
-    private val binding get() = fbinding!!
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        /*btnApplyFilter.setOnClickListener{
-            findNavController().popBackStack()
-        }*/
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        fbinding = null
-    }
+    private lateinit var binding: FragmentFilterBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        fbinding = FragmentFilterBinding.inflate(layoutInflater,container,false)
+        binding = FragmentFilterBinding.inflate(inflater,container,false)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnApplyFilter.setOnClickListener {
+            findNavController().popBackStack(R.id.listFragment,false)
+        }
+    }
+
 
 }
