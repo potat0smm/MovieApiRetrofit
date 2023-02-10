@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.movieapiretrofit.databinding.FragmentListBinding
 
 
@@ -29,14 +30,15 @@ class ListFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        sharedViewModel.listCharacters.observe(viewLifecycleOwner, {response ->
+        /*sharedViewModel.listCharacters.observe(viewLifecycleOwner, {response ->
             if(response.isSuccessful){
                 Log.d("Result", response.body()!!.result.toString())
             }
             else{
                 Log.d("Result Error",response.code().toString())
             }
-        })
+        })*/
+
 
 
 
