@@ -9,10 +9,10 @@ import com.example.movieapiretrofit.databinding.FragmentDetailBinding
 import com.example.movieapiretrofit.databinding.FragmentFilterBinding
 
 
-class DetailFragment : Fragment(R.layout.fragment_detail) {
+class DetailFragment : Fragment() {
 
-    private lateinit var binding: FragmentDetailBinding
-
+    private var fbinding: FragmentDetailBinding? = null
+    private val binding get() = fbinding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -22,7 +22,12 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDetailBinding.inflate(inflater,container,false)
+        fbinding = FragmentDetailBinding.inflate(inflater,container,false)
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        fbinding = null
     }
 }
