@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_listFragment_to_filterFragment"
             app:destination="@id/filterFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_detailFragment"
+            app:destination="@+id/detailFragment"/>
     </fragment>
     <dialog
         android:id="@+id/filterFragment"
         android:name="com.example.movieapiretrofit.FilterFragment"
         android:label=""
         tools:layout="@layout/fragment_filter" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.movieapiretrofit.DetailFragment"
+        android:label=""
+        tools:layout="@layout/fragment_detail"/>
 </navigation>

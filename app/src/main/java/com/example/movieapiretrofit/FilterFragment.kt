@@ -13,7 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class FilterFragment : BottomSheetDialogFragment() {
 
-    private lateinit var binding: FragmentFilterBinding
+   private lateinit var binding: FragmentFilterBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,

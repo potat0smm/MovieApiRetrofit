@@ -15,6 +15,11 @@ class ListFragment : Fragment(R.layout.fragment_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.titleCharacters.setOnClickListener {
+            findNavController().navigate(R.id.action_listFragment_to_detailFragment)
+        }
+
         binding.btnFilter.setOnClickListener {
             findNavController().navigate(R.id.action_listFragment_to_filterFragment)
         }

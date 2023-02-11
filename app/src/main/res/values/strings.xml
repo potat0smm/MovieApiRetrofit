@@ -19,4 +19,9 @@
     <string name="title_apply">APPLY</string>
     <string name="status">Status</string>
     <string name="todo">TODO</string>
+    <string name="txt_alive_detail">Alive</string>
+    <string name="_7">7</string>
+    <string name="rick_sanchez_detail">Rick Sanchez</string>
+    <string name="human">Human</string>
+    <string name="todo_todo">TODO</string>
 </resources>
