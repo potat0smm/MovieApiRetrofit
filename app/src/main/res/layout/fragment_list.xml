@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".ListFragment">
+    tools:context=".list.ListFragment">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchview"
@@ -72,4 +72,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchview"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
