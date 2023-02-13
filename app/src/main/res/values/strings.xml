@@ -5,6 +5,7 @@
     <string name="search_hint">Search Character</string>
     <string name="title_characters">Characters</string>
     <string name="title_reset">Reset</string>
+    <string name="text_error">%1$d - Characters not found!</string>
     <string name="_1">1</string>
     <string name="rick_sanchez">Rick Sanchez</string>
     <string name="title_filter">Filter</string>
@@ -24,4 +25,6 @@
     <string name="rick_sanchez_detail">Rick Sanchez</string>
     <string name="human">Human</string>
     <string name="todo_todo">TODO</string>
+    <string name="clear">Clear</string>
+    <string name="title_clear">Clear</string>
 </resources>

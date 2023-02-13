@@ -4,8 +4,10 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.SearchEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -30,22 +32,30 @@ class ListFragment : Fragment(R.layout.fragment_list) {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        sharedViewModel.getCharacters(1)
+        getCharactersFromViewModel()
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sharedViewModel.listCharacters.observe(viewLifecycleOwner) { response ->
-            if (response.isSuccessful) {
-                adapter.setCharacters(response.body()!!.results)
-                //Log.d("Result", response.body()!!.results.toString())
-            } else {
-                Log.d("ResultError", response.code().toString())
-            }
-        }
         binding.apply {
-            recyclerview.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+            sharedViewModel.listCharacters.observe(viewLifecycleOwner) { response ->
+                if (response.isSuccessful) {
+                    adapter.setCharacters(response.body()!!.results)
+                    txtApiError.visibility = View.GONE
+                    recyclerview.visibility = View.VISIBLE
+                    //Log.d("Result", response.body()!!.results.toString())
+                } else {
+                    // Log.d("ResultError", response.code().toString())
+                    binding.txtApiError.text = getString(R.string.text_error, response.code())
+                    txtApiError.visibility = View.VISIBLE
+                    recyclerview.visibility = View.INVISIBLE
+                }
+            }
+
+            recyclerview.layoutManager =
+                StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             recyclerview.adapter = adapter
 
             binding.btnFilter.setOnClickListener {
@@ -57,6 +67,39 @@ class ListFragment : Fragment(R.layout.fragment_list) {
             findNavController().navigate(R.id.action_listFragment_to_detailFragment)
         }
 
+        sharedViewModel.isFilter.observe(viewLifecycleOwner) {
+            binding.titleActionReset.visibility = if (it) View.VISIBLE else View.INVISIBLE
+        }
+        binding.titleActionReset.setOnClickListener {
+            getCharactersFromViewModel()
+            sharedViewModel.filterValue.value = arrayOf(0, 0)
+        }
+
+        getNameSearchView()
+
+    }
+
+    private fun getNameSearchView(){
+
+        binding.searchview.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                sharedViewModel.getByName(query.toString())
+                binding.searchview.setQuery("",false)
+                binding.searchview.clearFocus()
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
+
+
+    }
+
+    private fun getCharactersFromViewModel() {
+        sharedViewModel.getCharacters(1)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -69,5 +112,6 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         super.onDestroyOptionsMenu()
         lbinding = null
     }
+
 
 }

@@ -26,5 +26,9 @@
         android:id="@+id/detailFragment"
         android:name="com.example.movieapiretrofit.detail.DetailFragment"
         android:label=""
-        tools:layout="@layout/fragment_detail"/>
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="character"
+            app:argType="com.example.movieapiretrofit.model.Character" />
+    </fragment>
 </navigation>

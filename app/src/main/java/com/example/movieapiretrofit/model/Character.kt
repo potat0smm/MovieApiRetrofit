@@ -1,5 +1,10 @@
 package com.example.movieapiretrofit.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+
+@Parcelize
 data class Character(
 
     var id: Int,
@@ -11,5 +16,4 @@ data class Character(
     var location: LocationData,
     var image: String,
     var episode: List<String>
-
-)
+):Parcelable

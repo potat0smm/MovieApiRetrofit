@@ -1,5 +1,6 @@
 package com.example.movieapiretrofit.api
 
+import com.example.movieapiretrofit.R
 import com.example.movieapiretrofit.model.CharacterList
 import retrofit2.Response
 import retrofit2.http.GET
@@ -9,5 +10,33 @@ interface SimpleApi {
 
     @GET("api/character")
     suspend fun getCharacters(@Query("page") page: Int): Response<CharacterList>
+
+    @GET("api/character")
+    suspend fun getCharactersByStatusAndGender(
+        @Query("status") status:String,
+        @Query("gender") gender: String,
+        @Query("page") page:Int
+    ):Response<CharacterList>
+
+    @GET("api/character")
+    suspend fun getCharactersByStatus(
+        @Query("status") status: String,
+        @Query("page") page: Int
+    ): Response<CharacterList>
+
+    @GET("api/character")
+    suspend fun getCharactersByGender(
+        @Query("gender") gender: String,
+        @Query("page") page: Int
+    ): Response<CharacterList>
+
+    @GET("api/character")
+    suspend fun getCharactersByName(
+        @Query("name") name: String
+    ): Response<CharacterList>
+
+
+
+
 
 }

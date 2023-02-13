@@ -22,6 +22,11 @@ class CharacterAdapter: RecyclerView.Adapter<CharacterAdapter.CharacterViewHolde
             binding.txtNameCharacter.text = character.name
             Picasso.get().load(character.image).into(binding.imgCharacter)
             //binding.txtStatusCharacter.text = character.status
+
+            itemView.setOnClickListener { view ->
+                val action = ListFragmentDirections.actionListFragmentToDetailFragment(character)
+                view.findNavController().navigate(action)
+            }
         }
     }
 
@@ -37,9 +42,7 @@ class CharacterAdapter: RecyclerView.Adapter<CharacterAdapter.CharacterViewHolde
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
         holder.bind(listCharacters[position])
-        holder.itemView.setOnClickListener { view ->
-            view.findNavController().navigate(R.id.action_listFragment_to_detailFragment)
-        }
+
     }
 
     fun setCharacters(character: List<com.example.movieapiretrofit.model.Character>){

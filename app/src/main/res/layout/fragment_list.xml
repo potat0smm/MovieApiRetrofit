@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_filter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:queryHint="@string/search_hint"/>
+        app:queryHint="@string/search_hint" />
 
     <ImageButton
         android:id="@+id/btn_filter"
@@ -27,10 +27,10 @@
         android:layout_height="50dp"
         android:layout_margin="16dp"
         android:background="@drawable/background_button"
+        android:contentDescription="@string/todo"
         android:src="@drawable/ic_filter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/todo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/title_characters"
@@ -49,11 +49,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/title_reset"
+        android:visibility="invisible"
+        android:textSize="16sp"
+        android:textStyle="bold"
         android:textColor="#8BCCDF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.91"
         app:layout_constraintStart_toEndOf="@+id/title_characters"
-        app:layout_constraintTop_toBottomOf="@+id/searchview"/>
+        app:layout_constraintTop_toBottomOf="@+id/searchview" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
@@ -63,14 +66,28 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="16dp"
-        tools:listitem="@layout/item_list"
-        tools:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-        tools:orientation="vertical"
-        tools:spanCount="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchview"/>
+        app:layout_constraintTop_toBottomOf="@+id/searchview"
+        tools:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+        tools:listitem="@layout/item_list"
+        tools:orientation="vertical"
+        tools:spanCount="2" />
+
+    <TextView
+        android:id="@+id/txt_api_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
